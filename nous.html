@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOUS | MetazenVR</title>
+<link rel="icon" type="image/png" href="Logo_2024.png">
+
+<style>
+
+:root{
+--bg:#02050d;
+--panel:rgba(255,255,255,.05);
+--line:rgba(255,255,255,.08);
+--cyan:#36D7FF;
+--pink:#FF2F92;
+--orange:#FF6B1A;
+--yellow:#FFC72C;
+--text:#fff;
+--muted:#d7dbe8;
+--shadow:0 24px 80px rgba(0,0,0,.55);
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+color:white;
+
+background:
+radial-gradient(circle at top left,rgba(54,215,255,.10),transparent 30%),
+radial-gradient(circle at top right,rgba(255,47,146,.12),transparent 30%),
+radial-gradient(circle at bottom center,rgba(255,107,26,.08),transparent 35%),
+#02050d;
+
+overflow-x:hidden;
+line-height:1.7;
+}
+
+.container{
+width:min(1250px,92%);
+margin:auto;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+
+/* NAVBAR */
+
+header{
+position:sticky;
+top:0;
+z-index:999;
+
+background:rgba(0,0,0,.85);
+
+backdrop-filter:blur(15px);
+
+border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.navbar{
+height:90px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:15px;
+
+font-size:2rem;
+font-weight:800;
+}
+
+.brand img{
+width:70px;
+}
+
+.vr{
+background:linear-gradient(
+90deg,
+var(--cyan),
+var(--pink),
+var(--orange)
+);
+
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.contact-btn{
+
+padding:14px 30px;
+
+border-radius:15px;
+
+border:1px solid transparent;
+
+background:
+linear-gradient(#02050d,#02050d)padding-box,
+
+linear-gradient(
+90deg,
+var(--cyan),
+var(--pink),
+var(--orange)
+)border-box;
+}
+
+
+/* HERO */
+
+.hero{
+padding:90px 0;
+}
+
+.hero-grid{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+
+gap:60px;
+align-items:center;
+}
+
+.nous-logo{
+width:240px;
+margin-bottom:30px;
+}
+
+.hero h1{
+
+font-size:clamp(3rem,6vw,5rem);
+
+line-height:1;
+
+margin-bottom:25px;
+}
+
+.hero p{
+
+color:var(--muted);
+
+font-size:1.15rem;
+
+margin-bottom:30px;
+}
+
+.btn{
+
+padding:18px 35px;
+
+border-radius:14px;
+
+font-weight:bold;
+
+display:inline-block;
+
+background:
+linear-gradient(
+90deg,
+var(--cyan),
+var(--pink),
+var(--orange),
+var(--yellow)
+);
+
+}
+
+.btn-secondary {
+      gap: 12px;
+      border: 1px solid transparent;
+      background:
+        linear-gradient(var(--bg), var(--bg)) padding-box,
+        linear-gradient(90deg, var(--cyan), var(--pink), var(--orange)) border-box;
+}
+
+.play {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      border: 1px solid var(--text);
+      display: inline-grid;
+      place-items: center;
+      font-size: .75rem;
+}
+
+.hero-image{
+display:flex;
+justify-content:center;
+}
+
+.hero-image img{
+
+width:55%;
+max-width:260px;
+
+border-radius:20px;
+
+box-shadow:var(--shadow);
+}
+
+
+/* SECTION */
+
+.section{
+padding:70px 0;
+}
+
+.title{
+text-align:center;
+margin-bottom:50px;
+}
+
+.title h2{
+font-size:3rem;
+margin-bottom:15px;
+}
+
+.line{
+
+width:100px;
+height:3px;
+
+margin:auto;
+
+background:
+linear-gradient(
+90deg,
+var(--cyan),
+var(--pink),
+var(--orange)
+);
+}
+
+
+/* FEATURES */
+
+.features{
+
+display:grid;
+
+grid-template-columns:
+repeat(3,1fr);
+
+gap:25px;
+}
+
+.feature{
+
+padding:30px;
+
+background:var(--panel);
+
+border-radius:25px;
+
+border:1px solid var(--line);
+
+box-shadow:var(--shadow);
+
+transition:.4s;
+}
+
+.feature:hover{
+
+transform:translateY(-5px);
+
+}
+
+.feature h3{
+
+margin-bottom:15px;
+
+font-size:1.3rem;
+}
+
+.feature p{
+color:var(--muted);
+}
+
+
+/* GALLERY */
+
+.gallery{
+
+display:grid;
+
+grid-template-columns:auto auto auto;
+
+justify-content:center;
+
+gap:14px;
+}
+
+.gallery img{
+
+width:180px;
+
+border-radius:18px;
+
+box-shadow:var(--shadow);
+
+transition:.4s;
+}
+
+.gallery img:hover{
+
+transform:scale(1.05);
+
+}
+
+
+/* CTA */
+
+.cta{
+
+padding:70px;
+
+text-align:center;
+
+border-radius:30px;
+
+background:
+linear-gradient(
+135deg,
+rgba(54,215,255,.1),
+rgba(255,47,146,.08),
+rgba(255,107,26,.08)
+);
+
+border:1px solid var(--line);
+}
+
+.cta h2{
+
+font-size:3rem;
+
+margin-bottom:20px;
+}
+
+.cta p{
+
+max-width:900px;
+
+margin:auto;
+margin-bottom:35px;
+
+color:var(--muted);
+}
+
+
+footer{
+
+padding:40px;
+
+text-align:center;
+
+color:#999;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:950px){
+
+.hero-grid,
+.features{
+
+grid-template-columns:1fr;
+
+}
+
+.gallery{
+grid-template-columns:1fr;
+}
+
+.hero-image img{
+max-width:190px;
+}
+
+.gallery img{
+width:160px;
+margin:auto;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="container navbar">
+
+<a href="index.html" class="brand">
+
+<img src="Logo_2024.png">
+
+Metazen<span class="vr">VR</span>
+
+</a>
+
+<!--<a class="contact-btn" href="index.html">
+← Torna al sito
+</a>-->
+
+</div>
+
+</header>
+
+
+<section class="hero">
+
+<div class="container hero-grid">
+
+<div>
+
+<img
+class="nous-logo"
+src="NOUS_logo.png">
+
+
+<h1>
+
+La mente eterna
+
+</h1>
+
+
+<p>
+
+<strong>Non visitare la storia. Falle una domanda.</strong>
+
+</p>
+
+<p>
+
+NOUS trasforma musei, mostre e spazi culturali in esperienze vive e interattive.
+
+Immagina di entrare in una mostra e poter parlare direttamente con Dante,
+Leonardo da Vinci o qualunque figura storica.
+
+Fai una domanda.
+Ascolta una risposta.
+Inizia una conversazione.
+
+</p>
+
+
+<p>
+
+Grazie a un sistema intelligente integrato, NOUS ricrea dialoghi coerenti con personalità,
+linguaggio e visione del mondo dei protagonisti della storia, trasformando contenuti statici
+in esperienze coinvolgenti.
+
+</p>
+
+<p>
+
+Il visitatore non osserva più soltanto.
+
+<strong>Partecipa.</strong>
+
+<br><br>
+
+Non legge semplicemente informazioni.
+
+<strong>Le vive.</strong>
+
+</p>
+
+<p>
+
+Perché oggi le persone non cercano solo contenuti da consumare.
+
+Cercano esperienze da ricordare.
+
+</p>
+
+<div style="display:flex;gap:15px;flex-wrap:wrap;">
+
+    <a class="btn" href="mailto:metazenvr@gmail.com">
+        Richiedi una demo
+    </a>
+
+    <a class="btn btn-secondary"
+       href="NOUS_Brochure.pdf"
+       download="NOUS_Brochure.pdf"><span class="play">📄</span>
+
+         Scarica brochure
+
+    </a>
+
+</div>
+
+</div>
+
+
+<div class="hero-image">
+
+<img src="NOUS_screen_01.jpg">
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="section">
+
+<div class="container">
+
+<div class="title">
+
+<h2>
+
+Cosa rende NOUS diverso?
+
+</h2>
+
+<div class="line"></div>
+
+</div>
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<h3>
+💬 Conversazioni naturali
+</h3>
+
+<p>
+Dialoghi fluidi e coinvolgenti con personaggi e contenuti storici.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<h3>
+🎯 Esperienze personalizzate
+</h3>
+
+<p>
+Ogni visitatore può vivere percorsi differenti e interazioni uniche.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<h3>
+🗣 Figure storiche che prendono voce
+</h3>
+
+<p>
+Dante, Leonardo e altri protagonisti raccontano e rispondono in prima persona.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<h3>
+📈 Maggiore coinvolgimento
+</h3>
+
+<p>
+Aumenta tempo di permanenza, attenzione e partecipazione del pubblico.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<h3>
+✨ Esperienze memorabili
+</h3>
+
+<p>
+Esperienze progettate per essere condivise, ricordate e rivissute.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<h3>
+🧠 Cultura che dialoga
+</h3>
+
+<p>
+NOUS trasforma la cultura da contenuto da osservare a conversazione da vivere.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="section">
+
+<div class="container">
+
+<div class="title">
+
+<h2>
+Gallery
+</h2>
+
+<div class="line"></div>
+
+</div>
+
+
+<div class="gallery">
+
+<img src="NOUS_screen_01.jpg">
+<img src="NOUS_screen_02.png">
+<img src="NOUS_screen_03.png">
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="cta">
+
+            <h2>
+
+            Dai voce alla storia
+
+            </h2>
+
+            <p>
+            NOUS trasforma la cultura da contenuto da osservare
+            a conversazione da vivere.
+            </p>
+
+            <div style="margin:25px 0;color:var(--muted);font-size:1.1rem;">
+                📧 <a href="mailto:metazenvr@gmail.com">metazenvr@gmail.com</a><br><br>
+                📱 <a href="tel:+393492253990">+39 349 225 3990</a>
+            </div>
+
+            <a class="btn" href="mailto:metazenvr@gmail.com">
+
+            Contattaci
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <div class="container">
+      © 2023 Metazen · KAIROS · NOUS · Sviluppo app VR/AR<br>
+      P.IVA: 02707600744
+    </div>
+
+</footer>
+
+</body>
+</html>
